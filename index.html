@@ -20,10 +20,10 @@
         <p> Za pomocą poniższego kalkulatora możesz w łatwy sposób obliczyć ile paczek należy zamówić.</p>
 
         <div class="calculator-body">
-            <p>Powierzchnia do ocieplenia w m2</p>
+            <p>Powierzchnia do ocieplenia w m&#178;</p>
             <input type="number" class="insulated-surace" value="1">
             <p>Grubość styropianu w cm</p>
-            <select id="tchickness-choice">
+            <select id="tchickness-choice" class="styro-normal">
                 <option value="1" selected>1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -45,14 +45,25 @@
                 <option value="19">19</option>
                 <option value="20">20</option>
             </select>
+            <select class="styro-milling" id="tchickness-choice">
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+            </select>
             <p>Frezowanie</p>
-
-
-
-
-
-
-
 
 
 
@@ -60,11 +71,13 @@
                 <option value="TAK">TAK</option>
                 <option value="NIE" selected>NIE</option>
             </select>
-            <p>Wynik: <span class="score-span"> </span> paczek/paczki. Objętościowo wynosić będzie to <span class="stere-span"></span>m3</p>
+            <p class="score-paragraph">Wynik: <span class="score-span"> </span> paczek/paczki. Objętościowo wynosić będzie to <span class="stere-span"></span>m&#179;</p>
 
 
             <button class="calcBtn">Oblicz</button>
+            <ul class="list-of-products">
 
+            </ul>
 
         </div>
 
