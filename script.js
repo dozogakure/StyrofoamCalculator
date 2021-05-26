@@ -11,11 +11,15 @@ const normalStyro = document.querySelector('.styro-normal')
 
 
 const listOfProducts = document.querySelector('.list-of-products')
+const $liItem = listOfProducts.getElementsByTagName('li')
+const orderRequest = document.getElementById('orderRequest')
 
 let ID = 0;
 
-
-
+const testBTN = document.querySelector('.test')
+const $testLi1 = document.querySelector('.testLi')
+const $newAddedLi = document.querySelector('.test2')
+const newTab = []
 
 
 const sumScore = () => {
@@ -153,11 +157,30 @@ const sumScore = () => {
         listOfProducts.appendChild(newLiItem)
         newLiItem.setAttribute('id', ID)
         ID++;
+        newLiItem.classList.add('test2')
 
-        millingChoice.selectedIndex == 0 ? newLiItem.innerHTML = `Musisz zamówić ${Math.ceil(quantityPackage)} paczek styropianu frezowanego o grubości ${styroMilling.value}cm ` : newLiItem.innerHTML = `Musisz zamówić ${Math.ceil(quantityPackage)} paczek styropianu niefrezowanego o grubości ${tchicknesChoice.value}cm `
+        millingChoice.selectedIndex == 0 ? newLiItem.innerHTML = `Musisz zamówić ${Math.ceil(quantityPackage)} paczek styropianu frezowanego o grubości ${styroMilling.value} cm <button class="deleteBtn"><i class="far fa-times-circle"></i></button>  ` : newLiItem.innerHTML = `Musisz zamówić ${Math.ceil(quantityPackage)} paczek styropianu niefrezowanego o grubości ${tchicknesChoice.value} cm <button class="deleteBtn"><i class="far fa-times-circle"></i></button>`
+
+
+        // test z tablica
+
+        newTab.push(`${newLiItem.innerText}`)
+        console.log(newTab)
+        console.log(newLiItem)
+
+
+
+
+        // orderRequest.innerText = `${newLiItem.innerText}`
+        // const newTab = []
+        // newTab.push(`${newLiItem.innerText}`)
+        // console.log(newTab);
 
     }
     createNewListItem();
+
+
+
 }
 
 // funkcja która sprawdza jaki został wybrany rodzaj styropianu i podmienia selecta
@@ -167,8 +190,28 @@ const checkTypeStyro = () => {
 
 }
 
+// funkcja za pomocą usuwamy pozycje z listy
+const checkClick = (e) => {
+    if (e.target.closest('button').className === 'deleteBtn') {
+        deleteListItem(e)
+    } else {
+        console.log('cos poszlo nie tak');
+    }
+}
+
+const deleteListItem = (e) => {
+    const deleteItem = e.target.closest('li');
+    deleteItem.remove();
+}
+
+// dodawanie zawartości li do formularza
+
+const addItemsToTextArea = () => {
+    orderRequest.innerText = `${newLiItem.innerHTML}`
+}
 
 
-
+listOfProducts.addEventListener('click', checkClick)
 millingChoice.addEventListener('change', checkTypeStyro)
 calcBtn.addEventListener('click', sumScore)
+testBTN.addEventListener('click', addItemsToTextArea)
