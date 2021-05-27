@@ -15,13 +15,14 @@
 
 <body>
     <div class="wrapper">
-        <h1>Kalkulator Paczek Styropianu</h1>
-        <p> Niewiesz ile paczek steropianu potrzebujesz?</p>
-        <p> Za pomocą poniższego kalkulatora możesz w łatwy sposób obliczyć ile paczek należy zamówić.</p>
-
+        <div class="tittle">
+            <h1>Kalkulator Paczek Styropianu</h1>
+            <p> Niewiesz ile paczek steropianu potrzebujesz?</p>
+            <p> Za pomocą poniższego kalkulatora możesz w łatwy sposób obliczyć ile paczek należy zamówić.</p>
+        </div>
         <div class="calculator-body">
             <p>Powierzchnia do ocieplenia w m&#178;</p>
-            <input type="number" class="insulated-surace" value="1">
+            <input type="number" class="insulated-surace koko" value="1">
             <p>Grubość styropianu w cm</p>
             <select id="tchickness-choice" class="styro-normal">
                 <option value="1" selected>1</option>
@@ -71,15 +72,41 @@
                 <option value="TAK">TAK</option>
                 <option value="NIE" selected>NIE</option>
             </select>
-            <p class="score-paragraph">Wynik: <span class="score-span"> </span> paczek/paczki. Objętościowo wynosić będzie to <span class="stere-span"></span>m&#179;</p>
+            <p class="score-paragraph">Wynik: Potrzebujesz <span class="score-span"> </span> paczek/paczki. Objętościowo wynosić będzie to <span class="stere-span"></span>m&#179;</p>
 
 
             <button class="calcBtn">Oblicz</button>
             <ul class="list-of-products">
             </ul>
 
-            <textarea name="orderRequest" id="orderRequest" cols="30" rows="10"></textarea>
-            <button class="test">Wpisz dane do text area</button>
+
+
+            <button class="makeOrder">Zapytaj o wycenę</button>
+
+
+
+
+
+
+
+        </div>
+
+        <div class="contact-form">
+            <div class="form-title">
+                <button class="close-button"><i class="fas fa-window-close"></i></button>
+                <h2>Wypełnij poniższy formularz</h2>
+                <p> A my skontaktujemy się z Tobą w sprawie oferty handlowej</p>
+            </div>
+            <div class="data-form">
+                <p>Imię i Nazwisko</p>
+                <input type="text" placeholder="Jak się mamy do Pani/Pana zwracać">
+                <p>Numer telefonu</p>
+                <input type="phone" placeholder="Podaj swój numer telefonu">
+                <p>Twoja wiadomość</p>
+                <textarea name="orderRequest" id="orderRequest" cols="30" rows="10"></textarea>
+                <button>Wyślij wiadomość</button>
+            </div>
+
 
 
         </div>

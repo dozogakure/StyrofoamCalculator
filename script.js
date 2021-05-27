@@ -14,6 +14,18 @@ const listOfProducts = document.querySelector('.list-of-products')
 const $liItem = listOfProducts.getElementsByTagName('li')
 const orderRequest = document.getElementById('orderRequest')
 
+const makeorderBtn = document.querySelector('.makeOrder')
+
+
+
+
+
+
+
+
+
+
+
 let ID = 0;
 
 const testBTN = document.querySelector('.test')
@@ -21,6 +33,13 @@ const $testLi1 = document.querySelector('.testLi')
 const $newAddedLi = document.querySelector('.test2')
 const newTab = []
 
+
+
+
+
+// formularz zamówień 
+const formWrapper = document.querySelector('.contact-form')
+const closeFormBtn = document.querySelector('.fa-window-close')
 
 const sumScore = () => {
     const newSurace = insulatedSurace.value;
@@ -159,14 +178,13 @@ const sumScore = () => {
         ID++;
         newLiItem.classList.add('test2')
 
-        millingChoice.selectedIndex == 0 ? newLiItem.innerHTML = `Musisz zamówić ${Math.ceil(quantityPackage)} paczek styropianu frezowanego o grubości ${styroMilling.value} cm <button class="deleteBtn"><i class="far fa-times-circle"></i></button>  ` : newLiItem.innerHTML = `Musisz zamówić ${Math.ceil(quantityPackage)} paczek styropianu niefrezowanego o grubości ${tchicknesChoice.value} cm <button class="deleteBtn"><i class="far fa-times-circle"></i></button>`
+        millingChoice.selectedIndex == 0 ? newLiItem.innerHTML = `<i class="far fa-circle"></i> Musisz zamówić ${Math.ceil(quantityPackage)} paczek styropianu frezowanego o grubości ${styroMilling.value} cm <button class="deleteBtn"><i class="far fa-times-circle"></i></button>  ` : newLiItem.innerHTML = `<i class="far fa-circle"></i> Musisz zamówić ${Math.ceil(quantityPackage)} paczek styropianu niefrezowanego o grubości ${tchicknesChoice.value} cm <button class="deleteBtn"><i class="far fa-times-circle"></i></button>`
 
-
-        // test z tablica
+        makeorderBtn.style.visibility = 'visible'
+            // tablica która wypisuje wyniki w textarea
 
         newTab.push(`${newLiItem.innerText}`)
-        console.log(newTab)
-        console.log(newLiItem)
+        orderRequest.innerText = newTab
 
 
 
@@ -204,14 +222,19 @@ const deleteListItem = (e) => {
     deleteItem.remove();
 }
 
-// dodawanie zawartości li do formularza
+// funkcja która pokazuje formularz
 
-const addItemsToTextArea = () => {
-    orderRequest.innerText = `${newLiItem.innerHTML}`
+const showOrderForm = () => {
+        formWrapper.style.left = '0';
+    }
+    // funkcja która zamyka formularz
+
+const closeForm = () => {
+    formWrapper.style.left = '-3000px';
 }
-
 
 listOfProducts.addEventListener('click', checkClick)
 millingChoice.addEventListener('change', checkTypeStyro)
 calcBtn.addEventListener('click', sumScore)
-testBTN.addEventListener('click', addItemsToTextArea)
+closeFormBtn.addEventListener('click', closeForm)
+makeorderBtn.addEventListener('click', showOrderForm)

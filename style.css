@@ -9,34 +9,243 @@ body {
 }
 
 .wrapper {
+    position: relative;
     color: #fff;
     min-height: 80vh;
     width: 800px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     flex-direction: column;
     margin: 35px auto;
     border: 1px solid black;
-    border-radius: 15px;
-    background-color: rgb(31, 132, 248)
+    background-color: rgb(40, 99, 167);
 }
 
-.calculator-body p {
-    padding: 5px 0;
+.tittle {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    align-items: center;
+    margin: 10px 10px;
+}
+
+.tittle p {
+    padding-top: 5px;
 }
 
 .score-paragraph {
     visibility: hidden;
 }
 
+.calculator-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .calculator-body input,
 select {
-    width: 100%;
+    display: flex;
+    width: 90%;
     height: 25px;
     border: none;
+    padding: 0 10px;
+    margin: auto;
+    background-color: transparent;
+    color: #fff;
+    border-bottom: 2px solid #fff;
+}
+
+.calculator-body p {
+    padding: 10px 5px;
+}
+
+select option {
+    color: black;
+}
+
+.insulated-surace:focus,
+.styro-normal:focus,
+.styro-milling:focus {
+    border: gold 2px solid;
+    border-radius: 0px;
+    outline: none;
+}
+
+#milling:focus {
+    border: gold 2px solid;
+    outline: none;
+}
+
+.calcBtn {
+    padding: 10px;
+    /* width:  */
+    margin-right: 5%;
+    align-self: flex-end;
+    background-color: rgb(247, 213, 20);
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    transition: background-color 0.3s;
+}
+
+.calcBtn:hover {
+    background-color: rgb(243, 164, 44);
+    cursor: pointer;
+}
+
+.score-span,
+.stere-span {
+    color: rgb(247, 213, 20);
+    font-weight: bold;
 }
 
 .styro-milling {
     display: none;
+}
+
+.test2 {
+    padding: 2px 5px;
+}
+
+.fa-times-circle {
+    color: red;
+    transition: color 0.5s;
+}
+
+.fa-circle {
+    color: rgb(247, 213, 20);
+    font-size: 10px;
+    display: inline;
+}
+
+.fa-times-circle:hover {
+    color: rgb(240, 94, 94);
+}
+
+.deleteBtn {
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+}
+
+.makeOrder {
+    visibility: hidden;
+    padding: 10px;
+    /* width:  */
+    margin-right: 5%;
+    align-self: flex-end;
+    background-color: rgb(247, 213, 20);
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    transition: background-color 0.3s;
+}
+
+.makeOrder:hover {
+    background-color: rgb(243, 164, 44);
+    cursor: pointer;
+}
+
+
+/* FORMULARZ  */
+
+.contact-form {
+    position: absolute;
+    color: #fff;
+    min-height: 90vh;
+    width: 800px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 35px auto;
+    border: 1px solid black;
+    background-color: rgb(40, 99, 167);
+    left: -3000px;
+    top: -40px;
+}
+
+.data-form {
+    width: 100%;
+}
+
+.data-form p {
+    padding: 10px 5px;
+}
+
+.data-form input,
+textarea {
+    display: flex;
+    width: 90%;
+    min-height: 25px;
+    border: none;
+    margin: auto;
+    color: black;
+    border-bottom: 2px solid #fff;
+}
+
+.data-form input:focus {
+    border: gold 2px solid;
+    border-radius: 0px;
+    outline: none;
+}
+
+.data-form textarea:focus {
+    border: gold 2px solid;
+    border-radius: 0px;
+    outline: none;
+}
+
+.data-form button {
+    display: flex;
+    padding: 10px;
+    margin: 20px auto;
+    background-color: rgb(247, 213, 20);
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    transition: background-color 0.3s;
+}
+
+.data-form button:hover {
+    background-color: rgb(243, 164, 44);
+    cursor: pointer;
+}
+
+.form-title {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    align-items: center;
+    margin: 10px 10px;
+    width: 100%;
+}
+
+.form-title p {
+    padding: 10px 5px;
+}
+
+.close-button {
+    background-color: transparent;
+    border: 0px;
+    align-self: flex-end;
+    margin-right: 5%;
+}
+
+.fa-window-close {
+    display: flex;
+    font-size: 35px;
+    color: rgb(247, 213, 20);
+    transition: color 0.3s;
+}
+
+.fa-window-close:hover {
+    color: rgb(243, 164, 44);
 }
