@@ -7,6 +7,7 @@ const millingChoice = document.querySelector('#milling');
 const tchicknesChoice = document.querySelector('#tchickness-choice');
 const styroMilling = document.querySelector('.styro-milling')
 const normalStyro = document.querySelector('.styro-normal')
+const wholeCalculatorBody = document.querySelector('.wrapper')
 
 
 
@@ -31,7 +32,7 @@ let ID = 0;
 const testBTN = document.querySelector('.test')
 const $testLi1 = document.querySelector('.testLi')
 const $newAddedLi = document.querySelector('.test2')
-const newTab = []
+let newTab = []
 
 
 
@@ -40,6 +41,7 @@ const newTab = []
 // formularz zamówień 
 const formWrapper = document.querySelector('.contact-form')
 const closeFormBtn = document.querySelector('.fa-window-close')
+const sendFormBtn = document.querySelector('.send-form-btn')
 
 const sumScore = () => {
     const newSurace = insulatedSurace.value;
@@ -167,38 +169,37 @@ const sumScore = () => {
     scoreSpan.textContent = `${Math.ceil(quantityPackage)}`;
     stereSpan.textContent = `${stereValue.toFixed(2)}`
 
-    // funkcja która będzie dodawać wynik do listy. Działanie na zasadzie:
-    // 1. Potrzebujesz 150 paczek Styropianu o grubości 20 cm, niefrezowanego
-    // 2. Potrzebujesz 30 paczek styropianu o grubości 8 cm, niefrezowanego
-    // Dzięki temu przyszły klient będzie mógł w łatwy sposób policzyć ile styropianu potrzebuje na budowę domu. 
-    const createNewListItem = () => {
-        const newLiItem = document.createElement('li')
-        listOfProducts.appendChild(newLiItem)
-        newLiItem.setAttribute('id', ID)
-        ID++;
-        newLiItem.classList.add('test2')
+    createNewListItem(quantityPackage);
+}
 
-        millingChoice.selectedIndex == 0 ? newLiItem.innerHTML = `<i class="far fa-circle"></i> Musisz zamówić ${Math.ceil(quantityPackage)} paczek styropianu frezowanego o grubości ${styroMilling.value} cm <button class="deleteBtn"><i class="far fa-times-circle"></i></button>  ` : newLiItem.innerHTML = `<i class="far fa-circle"></i> Musisz zamówić ${Math.ceil(quantityPackage)} paczek styropianu niefrezowanego o grubości ${tchicknesChoice.value} cm <button class="deleteBtn"><i class="far fa-times-circle"></i></button>`
+// funkcja która będzie dodawać wynik do listy. Działanie na zasadzie:
+// 1. Potrzebujesz 150 paczek Styropianu o grubości 20 cm, niefrezowanego
+// 2. Potrzebujesz 30 paczek styropianu o grubości 8 cm, niefrezowanego
+// Dzięki temu przyszły klient będzie mógł w łatwy sposób policzyć ile styropianu potrzebuje na budowę domu. 
+const createNewListItem = (quantityPackage) => {
+    const newLiItem = document.createElement('li')
+    listOfProducts.appendChild(newLiItem)
+    newLiItem.setAttribute('id', ID)
+    newLiItem.classList.add('test2')
 
-        makeorderBtn.style.visibility = 'visible'
-            // tablica która wypisuje wyniki w textarea
+    millingChoice.selectedIndex == 0 ? newLiItem.innerHTML = `<i class="far fa-circle"></i> Musisz zamówić ${Math.ceil(quantityPackage)} paczek styropianu frezowanego o grubości ${styroMilling.value} cm <button class="deleteBtn"><i class="far fa-times-circle"></i></button>  ` : newLiItem.innerHTML = `<i class="far fa-circle"></i> Musisz zamówić ${Math.ceil(quantityPackage)} paczek styropianu niefrezowanego o grubości ${tchicknesChoice.value} cm <button class="deleteBtn"><i class="far fa-times-circle"></i></button>`
 
-        newTab.push(`${newLiItem.innerText}`)
-        orderRequest.innerText = newTab
+    // wyświetla przycisk do złożenia zamówienia/zapytania
+    makeorderBtn.style.opacity = '1'
 
+    // tablica która wypisuje wyniki w textarea
+    newTab.push({ text: `${newLiItem.innerText}`, id: ID });
+    orderRequest.innerText = newTab;
+    ID++;
+}
 
-
-
-        // orderRequest.innerText = `${newLiItem.innerText}`
-        // const newTab = []
-        // newTab.push(`${newLiItem.innerText}`)
-        // console.log(newTab);
-
+const getOrderFromTab = () => {
+    let orderString = "";
+    for (let i in newTab) {
+        orderString += `${newTab[i].text} `;
     }
-    createNewListItem();
 
-
-
+    orderRequest.innerHTML = orderString;
 }
 
 // funkcja która sprawdza jaki został wybrany rodzaj styropianu i podmienia selecta
@@ -208,7 +209,7 @@ const checkTypeStyro = () => {
 
 }
 
-// funkcja za pomocą usuwamy pozycje z listy
+// funkcja za której pomocą usuwamy pozycje z listy
 const checkClick = (e) => {
     if (e.target.closest('button').className === 'deleteBtn') {
         deleteListItem(e)
@@ -219,18 +220,25 @@ const checkClick = (e) => {
 
 const deleteListItem = (e) => {
     const deleteItem = e.target.closest('li');
+    const id = deleteItem.id;
+    newTab = newTab.filter(styropianSingleRequest => styropianSingleRequest.id != id);
     deleteItem.remove();
 }
 
 // funkcja która pokazuje formularz
 
 const showOrderForm = () => {
-        formWrapper.style.left = '0';
+        formWrapper.style.top = "5000px"
+        wholeCalculatorBody.style.top = '-5000px';
+        sendFormBtn.style.opacity = '1'
+        getOrderFromTab();
+
     }
     // funkcja która zamyka formularz
 
 const closeForm = () => {
-    formWrapper.style.left = '-3000px';
+    formWrapper.style.top = "-5000px"
+    wholeCalculatorBody.style.top = '0px';
 }
 
 listOfProducts.addEventListener('click', checkClick)

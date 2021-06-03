@@ -65,33 +65,36 @@
                 <option value="20">20</option>
             </select>
             <p>Frezowanie</p>
-
-
-
             <select id="milling">
                 <option value="TAK">TAK</option>
                 <option value="NIE" selected>NIE</option>
             </select>
             <p class="score-paragraph">Wynik: Potrzebujesz <span class="score-span"> </span> paczek/paczki. Objętościowo wynosić będzie to <span class="stere-span"></span>m&#179;</p>
-
-
             <button class="calcBtn">Oblicz</button>
             <ul class="list-of-products">
             </ul>
-
-
-
             <button class="makeOrder">Zapytaj o wycenę</button>
+        </div>
+        <div class="contact-form">
+            <div class="form-title">
+                <button class="close-button"><i class="fas fa-window-close"></i></button>
+                <h2>Wypełnij poniższy formularz</h2>
+                <p> A my skontaktujemy się z Tobą w sprawie oferty handlowej</p>
+            </div>
+            <div class="data-form">
+                <p>Imię i Nazwisko</p>
+                <input type="text" placeholder="Jak się mamy do Pani/Pana zwracać">
+                <p>Numer telefonu</p>
+                <input type="tel" id="tel" name="phone" placeholder="Podaj swój numer telefonu" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                <!-- Funkcja która uniemożliwa wpisania do inputa innej wartości niż liczba-->
 
-
-
-
-
-
-
+                <p>Twoja wiadomość</p>
+                <textarea name="orderRequest" id="orderRequest" cols="30" rows="10"></textarea>
+                <button class="send-form-btn">Wyślij wiadomość</button>
+            </div>
         </div>
 
-        <div class="contact-form">
+        <!-- <div class="contact-form">
             <div class="form-title">
                 <button class="close-button"><i class="fas fa-window-close"></i></button>
                 <h2>Wypełnij poniższy formularz</h2>
@@ -106,31 +109,8 @@
                 <textarea name="orderRequest" id="orderRequest" cols="30" rows="10"></textarea>
                 <button>Wyślij wiadomość</button>
             </div>
-
-
-
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
+        </div> -->
     </div>
-
-
-
-
-
-
-
-
 
 
     <script src="/script.js"></script>
